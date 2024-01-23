@@ -15,3 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Style Shop"
 include(":app")
+include(":domain")
+include(":data")
+include(":usecases")
