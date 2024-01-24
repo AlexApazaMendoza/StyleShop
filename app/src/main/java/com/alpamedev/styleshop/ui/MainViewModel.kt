@@ -6,9 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alpamedev.domain.Product
 import com.alpamedev.usecases.ProductUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(private val productUseCase: ProductUseCase): ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val productUseCase: ProductUseCase): ViewModel() {
     private val _products = MutableLiveData<List<Product>>(mutableListOf())
     val products: LiveData<List<Product>>
         get() = _products

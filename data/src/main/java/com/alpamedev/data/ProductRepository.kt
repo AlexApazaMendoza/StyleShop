@@ -1,8 +1,9 @@
 package com.alpamedev.data
 
 import com.alpamedev.domain.Product
+import javax.inject.Inject
 
-class ProductRepository(
+class ProductRepository @Inject constructor(
     private val productLocalDataSource: ProductLocalDataSource,
     private val productRemoteDataSource: ProductRemoteDataSource
 ) {
