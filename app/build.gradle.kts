@@ -34,6 +34,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    viewBinding {
+        enable = true
+    }
+    dataBinding {
+        enable = true
+    }
 }
 
 dependencies {
@@ -67,4 +73,28 @@ dependencies {
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:2.6.1")
+
+    //Navigation KTX
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+
+    // Activity KTX
+    implementation("androidx.activity:activity-ktx:1.8.2")
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+
+    // Saved state module for ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0")
+
+    // Annotation processor
+    kapt("androidx.lifecycle:lifecycle-compiler:2.7.0")
+
+    // Coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 }
