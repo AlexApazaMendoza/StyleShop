@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.alpamedev.domain.Product
 import com.alpamedev.styleshop.R
@@ -27,6 +29,7 @@ class ProductsFragment : Fragment(), OnProductListener {
     private lateinit var binding: FragmentProductsBinding
     private val parentViewModel: MainViewModel by activityViewModels()
     private lateinit var productItemAdapter: ProductItemAdapter
+    private lateinit var navController: NavController
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -49,6 +52,7 @@ class ProductsFragment : Fragment(), OnProductListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
         setUpRecyclerView()
         setUpObservers()
     }
@@ -89,6 +93,7 @@ class ProductsFragment : Fragment(), OnProductListener {
     }
 
     override fun onClick(product: Product) {
-        TODO("Not yet implemented")
+        val action = ProductsFragmentDirections.actionProductsFragmentToDetailFragment(product.id)
+        navController.navigate(action)
     }
 }

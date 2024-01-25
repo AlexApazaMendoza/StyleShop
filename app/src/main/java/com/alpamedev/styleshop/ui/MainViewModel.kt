@@ -32,4 +32,8 @@ class MainViewModel @Inject constructor(private val productUseCase: ProductUseCa
             _isLoading.postValue(false)
         }
     }
+
+    fun getProductById(id: Int): Product? {
+        return products.value?.find { it.id == id }
+    }
 }

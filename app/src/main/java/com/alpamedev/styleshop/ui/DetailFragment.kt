@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import com.alpamedev.styleshop.R
 import com.alpamedev.styleshop.databinding.FragmentDetailBinding
 
@@ -20,6 +22,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
+    private val parentViewModel: MainViewModel by activityViewModels()
+    val args: DetailFragmentArgs by navArgs()
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,8 +40,24 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        binding = FragmentDetailBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+        }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val idProduct = args.idProduct
+        setUpView(idProduct)
+    }
+
+    private fun setUpView(idProduct: Int?) {
+        idProduct?.let {
+            parentViewModel.getProductById(it)?.let { p ->
+                binding.product = p
+            }
+        }
     }
 
     companion object {
