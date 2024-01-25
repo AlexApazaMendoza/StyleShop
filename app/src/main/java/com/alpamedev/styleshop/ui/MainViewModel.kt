@@ -7,6 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.alpamedev.domain.Product
 import com.alpamedev.usecases.ProductUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,13 +23,19 @@ class MainViewModel @Inject constructor(private val productUseCase: ProductUseCa
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
+    private val coroutineExceptionHandler = CoroutineExceptionHandler{ _, throwable ->
+        throwable.printStackTrace()
+    }
+
+    private val coroutine = CoroutineScope(Dispatchers.IO + coroutineExceptionHandler)
+
     init {
         loadData()
     }
 
     private fun loadData() {
         _isLoading.value = true
-        viewModelScope.launch {
+        coroutine.launch {
             val result = productUseCase.getProducts()
             _products.postValue(result)
             _isLoading.postValue(false)
