@@ -57,4 +57,10 @@ class ProductItemAdapter(
         dataSet.addAll(it)
         notifyDataSetChanged()
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun sortList() {
+        dataSet.sortBy { it.price }
+        notifyDataSetChanged()
+    }
 }

@@ -4,7 +4,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/common_margin_default"
     tools:context=".ui.ProductsFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_search"
+        app:endIconMode="clear_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ibSort">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/ibSort"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/common_margin_min"
+        android:paddingHorizontal="@dimen/common_padding_min"
+        android:src="@drawable/ic_sort"
+        app:layout_constraintTop_toTopOf="@id/tilSearch"
+        app:layout_constraintBottom_toBottomOf="@id/tilSearch"
+        app:layout_constraintStart_toEndOf="@id/tilSearch"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProduct"
@@ -14,7 +44,7 @@
         android:layout_marginVertical="@dimen/common_margin_min"
         tools:itemCount="3"
         tools:listitem="@layout/product_row_item"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
