@@ -9,6 +9,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.alpamedev.styleshop.R
 import com.alpamedev.styleshop.databinding.FragmentDetailBinding
+import com.alpamedev.styleshop.ui.adapters.ProductCarouselAdapter
+import com.google.android.material.carousel.CarouselLayoutManager
+import com.google.android.material.carousel.CarouselSnapHelper
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +26,7 @@ private const val ARG_PARAM2 = "param2"
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private val parentViewModel: MainViewModel by activityViewModels()
+    private lateinit var carouselAdapter: ProductCarouselAdapter
     val args: DetailFragmentArgs by navArgs()
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -48,14 +52,26 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpCarousel()
         val idProduct = args.idProduct
         setUpView(idProduct)
+    }
+
+    private fun setUpCarousel() {
+        carouselAdapter = ProductCarouselAdapter()
+        binding.rvCarousel.apply {
+            layoutManager = CarouselLayoutManager()
+            adapter = carouselAdapter
+        }
+        val snapHelper = CarouselSnapHelper()
+        snapHelper.attachToRecyclerView(binding.rvCarousel)
     }
 
     private fun setUpView(idProduct: Int?) {
         idProduct?.let {
             parentViewModel.getProductById(it)?.let { p ->
                 binding.product = p
+                carouselAdapter.updateList(p.images)
             }
         }
     }
