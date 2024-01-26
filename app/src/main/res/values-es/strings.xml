@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Style Shop</string>
+
+    <string name="content_description_product">producto</string>
+    <string name="product_price">$ %s</string>
+    <string name="product_price_full">Precio: $ %s</string>
+    <string name="search_hint">Encuentra tu producto</string>
+    <string name="button_sort_description">ordenar producto</string>
+</resources>
