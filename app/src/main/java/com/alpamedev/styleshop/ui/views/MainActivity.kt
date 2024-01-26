@@ -1,9 +1,10 @@
-package com.alpamedev.styleshop.ui
+package com.alpamedev.styleshop.ui.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.alpamedev.styleshop.databinding.ActivityMainBinding
+import com.alpamedev.styleshop.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

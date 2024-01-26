@@ -1,4 +1,4 @@
-package com.alpamedev.styleshop.ui
+package com.alpamedev.styleshop.ui.views
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.alpamedev.styleshop.databinding.FragmentDetailBinding
+import com.alpamedev.styleshop.ui.viewmodels.MainViewModel
 import com.alpamedev.styleshop.ui.adapters.ProductCarouselAdapter
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.CarouselSnapHelper

@@ -1,8 +1,6 @@
-package com.alpamedev.styleshop.ui
+package com.alpamedev.styleshop.ui.views
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,14 +10,16 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.alpamedev.domain.Product
-import com.alpamedev.styleshop.R
 import com.alpamedev.styleshop.databinding.FragmentProductsBinding
+import com.alpamedev.styleshop.ui.viewmodels.MainViewModel
 import com.alpamedev.styleshop.ui.adapters.ProductItemAdapter
 import com.alpamedev.styleshop.ui.listeners.OnProductListener
+import com.alpamedev.styleshop.ui.viewmodels.ProductsViewModel
 
 class ProductsFragment : Fragment(), OnProductListener {
     private lateinit var binding: FragmentProductsBinding
     private val parentViewModel: MainViewModel by activityViewModels()
+    private val productsViewModel: ProductsViewModel by activityViewModels()
     private lateinit var productItemAdapter: ProductItemAdapter
     private lateinit var navController: NavController
 
@@ -27,40 +27,22 @@ class ProductsFragment : Fragment(), OnProductListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentProductsBinding.inflate(inflater, container, false)
+        binding = FragmentProductsBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        setUpViews()
+        setUpViewModel()
+        setUpRecyclerView()
         setUpObservers()
     }
 
-    private fun setUpViews() {
-        binding.tieSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val data = if (s.toString().isNotEmpty()) {
-                    parentViewModel.products.value?.filter {
-                        it.title.contains(s.toString(), true)
-                    } ?: listOf()
-                } else{
-                    parentViewModel.products.value ?: listOf()
-                }
-                productItemAdapter.updateList(data)
-            }
-
-            override fun afterTextChanged(s: Editable?) { }
-        })
-
-        binding.ibSort.setOnClickListener {
-            productItemAdapter.sortList()
-        }
-
-        setUpRecyclerView()
+    private fun setUpViewModel() {
+        binding.viewmodel = productsViewModel
     }
 
     private fun setUpRecyclerView() {
@@ -75,6 +57,21 @@ class ProductsFragment : Fragment(), OnProductListener {
     private fun setUpObservers() {
         parentViewModel.products.observe(viewLifecycleOwner) {
             productItemAdapter.updateList(it)
+        }
+        productsViewModel.text.observe(viewLifecycleOwner) {
+            val data = if (it.isNotEmpty()) {
+                parentViewModel.products.value?.filter { p ->
+                    p.title.contains(it, true)
+                } ?: listOf()
+            } else{
+                parentViewModel.products.value ?: listOf()
+            }
+            productItemAdapter.updateList(data)
+        }
+        productsViewModel.isSortClicked.observe(viewLifecycleOwner) {
+            if (it) {
+                productItemAdapter.sortList()
+            }
         }
     }
 

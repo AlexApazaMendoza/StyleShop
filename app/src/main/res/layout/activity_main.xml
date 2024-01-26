@@ -5,14 +5,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.alpamedev.styleshop.ui.MainViewModel" />
+            type="com.alpamedev.styleshop.ui.viewmodels.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorSurface"
-        tools:context=".ui.MainActivity">
+        tools:context=".ui.views.MainActivity">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/navGraphMainHostFragment"

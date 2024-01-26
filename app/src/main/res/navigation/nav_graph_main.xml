@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/productsFragment"
-        android:name="com.alpamedev.styleshop.ui.ProductsFragment"
+        android:name="com.alpamedev.styleshop.ui.views.ProductsFragment"
         android:label="fragment_products"
         tools:layout="@layout/fragment_products" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.alpamedev.styleshop.ui.DetailFragment"
+        android:name="com.alpamedev.styleshop.ui.views.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <argument
