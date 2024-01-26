@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.alpamedev.styleshop.R
 import com.alpamedev.styleshop.databinding.FragmentDetailBinding
 import com.alpamedev.styleshop.ui.adapters.ProductCarouselAdapter
+import com.alpamedev.styleshop.ui.adapters.ProductItemAdapter
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.CarouselSnapHelper
 
@@ -27,6 +30,7 @@ class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private val parentViewModel: MainViewModel by activityViewModels()
     private lateinit var carouselAdapter: ProductCarouselAdapter
+    private lateinit var navController: NavController
     val args: DetailFragmentArgs by navArgs()
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -52,6 +56,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
         setUpCarousel()
         val idProduct = args.idProduct
         setUpView(idProduct)
@@ -73,6 +78,9 @@ class DetailFragment : Fragment() {
                 binding.product = p
                 carouselAdapter.updateList(p.images)
             }
+        }
+        binding.ivReturn.setOnClickListener {
+            navController.popBackStack()
         }
     }
 

@@ -22,16 +22,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <ImageView
+                android:id="@+id/ivReturn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:layout_marginHorizontal="@dimen/common_margin_default"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="@string/content_description_product"
+                app:tint="?attr/colorOnPrimary"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCarousel"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/carousel_height"
                 android:clipChildren="false"
                 android:clipToPadding="false"
+                android:layout_marginTop="@dimen/common_margin_default"
                 tools:listitem="@layout/carousel_item"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/ivReturn"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
