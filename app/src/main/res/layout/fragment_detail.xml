@@ -10,53 +10,64 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/common_padding_default"
         tools:context=".ui.DetailFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCarousel"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/carousel_height"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            tools:listitem="@layout/carousel_item"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_bottom_round"
+            android:paddingVertical="@dimen/common_padding_max"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCarousel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/carousel_height"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                tools:listitem="@layout/carousel_item"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.textview.MaterialTextView
+            style="@style/StyleShop.TextView.Header.OnSurface"
             android:id="@+id/tvName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{product.title}"
-            android:layout_marginTop="@dimen/common_margin_min"
-            android:layout_marginEnd="@dimen/common_margin_min"
+            android:layout_margin="@dimen/common_margin_default"
             tools:text="Name of product"
-            app:layout_constraintTop_toBottomOf="@id/rvCarousel"
+            app:layout_constraintTop_toBottomOf="@id/clHeader"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tvPrice"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.valueOf(product.price)}"
-            android:layout_marginTop="@dimen/common_margin_min"
-            android:layout_marginStart="@dimen/common_margin_min"
-            tools:text="$ 10.0"
-            app:layout_constraintTop_toBottomOf="@id/rvCarousel"
-            app:layout_constraintStart_toEndOf="@id/tvName"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.google.android.material.textview.MaterialTextView
+            style="@style/StyleShop.TextView.Paragraph.OnSurface"
             android:id="@+id/tvDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{String.valueOf(product.description)}"
-            android:layout_marginTop="@dimen/common_margin_min"
+            android:layout_margin="@dimen/common_margin_default"
             tools:text="Description of product"
             app:layout_constraintTop_toBottomOf="@id/tvName"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/StyleShop.TextView.Header.OnSurface"
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/product_price_full(String.valueOf(product.price))}"
+            android:layout_margin="@dimen/common_margin_default"
+            tools:text="$ 10.0"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
             app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

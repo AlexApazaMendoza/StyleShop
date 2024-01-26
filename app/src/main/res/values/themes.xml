@@ -22,6 +22,11 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="StyleShop.MaterialButton.Icon.Filled" parent = "Widget.Material3.Button.IconButton.Filled.Tonal">
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="iconTint">?attr/colorOnPrimary</item>
+    </style>
+
     <!--Types-->
     <style name="StyleShop.TextView.Header" parent = "StyleShop.TextView.Base">
         <item name="android:textSize">24sp</item>

@@ -10,12 +10,16 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin_min"
+        app:cardBackgroundColor="?attr/colorSecondary"
+        android:elevation="5dp"
+        app:cardCornerRadius="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/common_padding_default">
+            android:padding="@dimen/common_padding_min">
 
             <ImageView
                 android:id="@+id/ivProduct"
@@ -28,6 +32,7 @@
                 android:contentDescription="@string/content_description_product" />
 
             <com.google.android.material.textview.MaterialTextView
+                style="@style/StyleShop.TextView.Subtitle.OnSecondary"
                 android:id="@+id/tvName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -35,23 +40,21 @@
                 android:layout_marginTop="@dimen/common_margin_min"
                 android:layout_marginEnd="@dimen/common_margin_min"
                 tools:text="Name of product"
-                app:layout_constraintTop_toBottomOf="@id/ivProduct"
+                app:layout_constraintTop_toBottomOf="@id/tvPrice"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tvPrice"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <com.google.android.material.textview.MaterialTextView
+                style="@style/StyleShop.TextView.Header.OnSecondary"
                 android:id="@+id/tvPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(product.price)}"
+                android:text="@{@string/product_price(String.valueOf(product.price))}"
                 android:layout_marginTop="@dimen/common_margin_min"
-                android:layout_marginStart="@dimen/common_margin_min"
                 tools:text="$ 10.0"
                 app:layout_constraintTop_toBottomOf="@id/ivProduct"
-                app:layout_constraintStart_toEndOf="@id/tvName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
