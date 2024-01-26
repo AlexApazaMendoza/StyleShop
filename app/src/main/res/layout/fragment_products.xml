@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/common_margin_default"
     tools:context=".ui.ProductsFragment">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -13,6 +12,8 @@
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/ic_search"
         app:endIconMode="clear_text"
+        android:hint="@string/search_hint"
+        android:layout_margin="@dimen/common_margin_default"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/ibSort">
@@ -31,8 +32,9 @@
         android:id="@+id/ibSort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/common_margin_min"
+        android:layout_marginEnd="@dimen/common_margin_default"
         app:icon="@drawable/ic_sort"
+        android:contentDescription="@string/button_sort_description"
         app:layout_constraintTop_toTopOf="@id/tilSearch"
         app:layout_constraintBottom_toBottomOf="@id/tilSearch"
         app:layout_constraintStart_toEndOf="@id/tilSearch"
@@ -40,13 +42,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_marginVertical="@dimen/common_margin_min"
+        android:layout_margin="@dimen/common_margin_default"
         tools:itemCount="3"
         tools:listitem="@layout/product_row_item"
         app:layout_constraintTop_toBottomOf="@id/tilSearch"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
