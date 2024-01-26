@@ -3,7 +3,6 @@ package com.alpamedev.styleshop.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.alpamedev.domain.Product
 import com.alpamedev.usecases.ProductUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
