@@ -1,6 +1,7 @@
 package com.alpamedev.styleshop.framework.api.entities
 
 import com.alpamedev.domain.Product
+import com.alpamedev.styleshop.framework.formatImageUrl
 
 data class ProductResponse(
     val id: Int,
@@ -19,7 +20,7 @@ data class ProductResponse(
             price,
             description,
             category.toCategory(),
-            images,
+            images.map { formatImageUrl(it) },
             creationAt,
             updatedAt
         )

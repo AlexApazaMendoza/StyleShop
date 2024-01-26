@@ -45,6 +45,7 @@ class ProductItemAdapter(
             setUpListener(product)
             Glide.with(mContext)
                 .load(product.images[0])
+                .placeholder(R.drawable.image_no_available)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
                 .into(binding.ivProduct)

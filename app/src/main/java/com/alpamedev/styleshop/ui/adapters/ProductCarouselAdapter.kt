@@ -34,6 +34,7 @@ class ProductCarouselAdapter: RecyclerView.Adapter<ProductCarouselAdapter.Produc
         with(holder) {
             Glide.with(mContext)
                 .load(dataSet[position])
+                .placeholder(R.drawable.image_no_available)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
                 .into(binding.ivProduct)
