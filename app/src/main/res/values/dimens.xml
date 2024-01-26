@@ -7,6 +7,6 @@
     <dimen name="common_margin_default">16dp</dimen>
     <dimen name="common_margin_max">24dp</dimen>
     <dimen name="product_image_height">180dp</dimen>
-    <dimen name="carousel_height">196dp</dimen>
-    <dimen name="carousel_item_width">150dp</dimen>
+    <dimen name="carousel_height">320dp</dimen>
+    <dimen name="carousel_item_width">240dp</dimen>
 </resources>
