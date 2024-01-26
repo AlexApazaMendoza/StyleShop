@@ -1,9 +1,96 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.StyleShop" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.StyleShop" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/light_blue_200</item>
+        <item name="colorPrimaryVariant">@color/light_blue_500</item>
+        <item name="colorOnPrimary">@color/black</item>
+
+        <item name="colorSecondary">@color/blue_gray_A200</item>
+        <item name="colorSecondaryVariant">@color/blue_gray_A400</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <item name="colorSurface">@color/grey_200</item>
+        <item name="colorOnSurface">@color/black</item>
     </style>
 
     <style name="Theme.StyleShop" parent="Base.Theme.StyleShop" />
+
+    <!--Base-->
+    <style name="StyleShop.TextView.Base" parent = "Widget.MaterialComponents.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <!--Types-->
+    <style name="StyleShop.TextView.Header" parent = "StyleShop.TextView.Base">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/nunito_bold</item>
+    </style>
+
+    <style name="StyleShop.TextView.Title" parent = "StyleShop.TextView.Base">
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/nunito_bold</item>
+    </style>
+
+    <style name="StyleShop.TextView.Subtitle" parent = "StyleShop.TextView.Base">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/nunito_regular</item>
+    </style>
+
+    <style name="StyleShop.TextView.Paragraph" parent = "StyleShop.TextView.Base">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/nunito_regular</item>
+    </style>
+
+    <!--OnSurface-->
+    <style name="StyleShop.TextView.Header.OnSurface" parent = "StyleShop.TextView.Header">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="StyleShop.TextView.Title.OnSurface" parent = "StyleShop.TextView.Title">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="StyleShop.TextView.Subtitle.OnSurface" parent = "StyleShop.TextView.Subtitle">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="StyleShop.TextView.Paragraph.OnSurface" parent = "StyleShop.TextView.Paragraph">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <!--OnPrimary-->
+    <style name="StyleShop.TextView.Header.OnPrimary" parent = "StyleShop.TextView.Header">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="StyleShop.TextView.Title.OnPrimary" parent = "StyleShop.TextView.Title">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="StyleShop.TextView.Subtitle.OnPrimary" parent = "StyleShop.TextView.Subtitle">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="StyleShop.TextView.Paragraph.OnPrimary" parent = "StyleShop.TextView.Paragraph">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <!--OnSecondary-->
+    <style name="StyleShop.TextView.Header.OnSecondary" parent = "StyleShop.TextView.Header">
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+
+    <style name="StyleShop.TextView.Title.OnSecondary" parent = "StyleShop.TextView.Title">
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+
+    <style name="StyleShop.TextView.Subtitle.OnSecondary" parent = "StyleShop.TextView.Subtitle">
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+
+    <style name="StyleShop.TextView.Paragraph.OnSecondary" parent = "StyleShop.TextView.Paragraph">
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
 </resources>

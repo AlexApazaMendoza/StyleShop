@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="grey_200">#eeeeee</color>
+    <color name="grey_700">#616161</color>
+
+    <color name="light_blue_200">#81d4fa</color>
+    <color name="light_blue_500">#03a9f4</color>
+    <color name="light_blue_700">#0288d1</color>
+
+    <color name="blue_gray_A200">#b0bec5</color>
+    <color name="blue_gray_A400">#78909c</color>
+    <color name="blue_gray_A700">#455a64</color>
 </resources>
